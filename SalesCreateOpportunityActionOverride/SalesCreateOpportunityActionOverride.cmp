@@ -1,0 +1,11 @@
+<aura:component description="SalesCreateOpportunityActionOverride" implements="lightning:actionOverride">
+    <aura:attribute name="pageReference" type="Object"/>
+
+    <div class="slds-grid slds-grid_align-center">
+        <div class="slds-size_1-of-2">
+            <lightning:card title="{!$Label.c.Sales_Create_New_Opportunity}" class="slds-m-bottom_xx-large">
+                <c:SalesCreateOpportunityFlowLauncher enableDebugging="false" pageReference="{!v.pageReference}"/>
+            </lightning:card>
+        </div>
+    </div>
+</aura:component>

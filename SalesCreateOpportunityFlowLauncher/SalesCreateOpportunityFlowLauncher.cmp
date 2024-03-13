@@ -1,0 +1,18 @@
+<aura:component description="SalesCreateOpportunityFlowLauncher" implements="lightning:actionOverride,force:lightningQuickAction">
+    <aura:attribute name="parentRecordId" type="String" access="private" />
+    <aura:attribute name="enableDebugging" type="Boolean" default="false" access="public" />
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="enableWrapper" type="Boolean" default="true" access="private" />
+    <aura:attribute name="onComplete" type="Aura.Action" access="public" />
+
+    <c:Debugger aura:id="debugger" enableDebugging="{!v.enableDebugging}" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChange}" />
+
+    <!-- exposes handleOnInit as reInit so it can be called in onPageReferenceChange -->
+    <aura:method name="reInit" action="{!c.handleOnInit}" access="public" />
+    <aura:method name="handleOnComplete" action="{!v.onComplete}" access="public" />
+
+    <lightning:flow aura:id="flow" onstatuschange="{!c.onFlowStatusChange}" />
+</aura:component>
